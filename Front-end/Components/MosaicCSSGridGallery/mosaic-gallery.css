@@ -1,283 +1,96 @@
-.gallery-content {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-.gallery {
-    display: grid;
-    grid-template-rows: repeat(8, 230px);
-    grid-template-columns: repeat(4, 1fr);
-    row-gap: 10px;
-    column-gap: 10px;
-    width: 90vw;
-    max-width: 1200px;
-}
-.gallery-item {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: black; /* Overlay related */
-}
-.gallery-item:active {
-    transform: scale(0.95);
-    transition: all 0.2s;
-}
-.gallery-item .gallery-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.3s;
-}
-.gallery-item:hover .gallery-image {
-    opacity: 0.6;
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: all 0.8s;
-}
-.gallery-item .gallery-overflow-box {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-.gallery-item .zoom-icon {
-    position: absolute;
-    opacity: 0;
-    width: 50px;
-    height: 50px;
-    top: 50%;
-    left: 50%;
-    margin-top: -25px;
-    margin-left: -25px;
-    z-index: 9;
-    background-image: url("img/icon_expand.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.gallery-item:hover .zoom-icon {
-    opacity: 1;
-    transition: all 0.7s;
+* {
+    box-sizing: border-box;
 }
 
-/* #Gallery modal */
-.gallery-modal {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 99;
+/* form starting stylings ------------------------------- */
+.input-group 			  { 
+  position:relative; 
+  margin-bottom:45px; 
 }
-.gallery-modal-image {
-    position: relative;
-    margin: auto;
-    padding: 12px;
-    display: block;
-    width: 90vw;
-    max-width: 1000px;
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
 }
-.close-button {
-    position: absolute;
-    color: #fafafa;
-    font-size: 42px;
-    top: 30px;
-    right: 5vw;
-    z-index: 100;
-    transition: all 0.6s;
-}
-.close-button:hover {
-    transform: scale(1.2);
-    cursor: pointer;
-    color: grey;
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
 }
 
-
-/* #Grid structure */
-.gallery-item:nth-child(1) {
-    grid-row: span 2;
-    grid-column: span 1;
-}
-.gallery-item:nth-child(3) {
-    grid-row: 2 / span 1;
-    grid-column: 2 / span 1;
-}
-.gallery-item:nth-child(4) {
-    grid-row: span 2;
-    grid-column: span 2;
-}
-.gallery-item:nth-child(5) {
-    grid-row: span 2;
-    grid-column: span 2;
-}
-.gallery-item:nth-child(6) {
-    grid-row: span 2;
-    grid-column: span 1;
-}
-.gallery-item:nth-child(10) {
-    grid-row: 6 / span 1;
-    grid-column: span 1;
-}
-.gallery-item:nth-child(11) {
-    grid-row: span 2;
-    grid-column: span 2;
-}
-.gallery-item:nth-child(12) {
-    grid-row: span 2;
-    grid-column: span 1;
-}
-.gallery-item:nth-child(14) {
-    grid-row: 8 / span 1;
-    grid-column: span 1;
-}
-.gallery-item:nth-child(15) {
-    grid-row: span 2;
-    grid-column: span 1;
-}
-.gallery-item:nth-child(16) {
-    grid-row: span 2;
-    grid-column: span 2;
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
 }
 
-
-@media only screen and (max-width: 1010px) {
-    .gallery {
-        grid-template-rows: repeat(10, 21vw);
-        grid-template-columns: repeat(3, 1fr);
-        row-gap: 10px;
-        column-gap: 10px;
-    }
-    .gallery-item:nth-child(1) {
-        grid-row: span 1;
-        grid-column: span 1;
-    }
-    .gallery-item:nth-child(2) {
-        grid-row: 2 / span 1;
-        grid-column: span 1;
-    }
-    .gallery-item:nth-child(3) {
-        grid-row: span 2;
-        grid-column: span 2;
-    }
-    .gallery-item:nth-child(4) {
-        grid-row: 3 / span 2;
-        grid-column: 1 / span 1;
-    }
-    .gallery-item:nth-child(5) {
-        grid-row: span 1;
-        grid-column: span 1;
-    }
-    .gallery-item:nth-child(6) {
-        grid-row: 4 / span 1;
-        grid-column: span 1;
-    }
-    .gallery-item:nth-child(7) {
-        grid-row: span 2;
-        grid-column: span 1;
-    }
-    .gallery-item:nth-child(8) {
-        grid-row: 5 / span 2;
-        grid-column: 1 / span 2;
-    }
-    .gallery-item:nth-child(11) {
-        grid-row: 7 / span 2;
-        grid-column: 1 / span 1;
-    }
-    .gallery-item:nth-child(12) {
-        grid-row: 7 / span 2;
-        grid-column: 2 / span 2;
-    }
-    .gallery-item:nth-child(13) {
-        grid-row: 9 / span 2;
-        grid-column: 1 / span 1;
-    }
-    .gallery-item:nth-child(14) {
-        grid-row: 9 / span 1;
-        grid-column: 2 / span 1;
-    }
-    .gallery-item:nth-child(15) {
-        grid-row: 10 / span 1;
-        grid-column: 2 / span 1;
-    }
-    .gallery-item:nth-child(16) {
-        grid-row: 9 / span 2;
-        grid-column: 3 / span 1;
-    }
-
-
-
+/* BOTTOM BARS ================================= */
+.input-bar 	{ position:relative; display:block; width:300px; }
+.input-bar:before, .input-bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.input-bar:before {
+  left:50%;
+}
+.input-bar:after {
+  right:50%; 
 }
 
-@media only screen and (max-width: 740px) {
-    .gallery {
-        grid-template-rows: repeat(10, 32vw);
-        grid-template-columns: repeat(2, 1fr);
-        row-gap: 10px;
-        column-gap: 10px;
-    }
-    .gallery-item:nth-child(1) {
-        grid-row: 1 / span 2;
-        grid-column: 1 / span 1;
-    }
-    .gallery-item:nth-child(2) {
-        grid-row: 1 / span 1;
-        grid-column: 2 / span 1;
-    }
-    .gallery-item:nth-child(3) {
-        grid-row: 2 / span 1;
-        grid-column: 2 / span 1;
-    }
-    .gallery-item:nth-child(4) {
-        grid-row: 3 / span 1;
-        grid-column: 1 / span 1;
-    }
-    .gallery-item:nth-child(5) {
-        grid-row: 4 / span 1;
-        grid-column: 1 / span 1;
-    }
-    .gallery-item:nth-child(6) {
-        grid-row: 3 / span 1;
-        grid-column: 2 / span 1;
-    }
-    .gallery-item:nth-child(7) {
-        grid-row: 4 / span 2;
-        grid-column: 2 / span 1;
-    }
-    .gallery-item:nth-child(8) {
-        grid-row: 5 / span 2;
-        grid-column: 1 / span 1;
-    }
-    .gallery-item:nth-child(9) {
-        grid-row: 6 / span 1;
-        grid-column: 2 / span 1;
-    }
-    .gallery-item:nth-child(10) {
-        grid-row: 7 / span 1;
-        grid-column: 1 / span 1;
-    }
-    .gallery-item:nth-child(11) {
-        grid-row: 8 / span 1;
-        grid-column: 1 / span 1;
-    }
-    .gallery-item:nth-child(12) {
-        grid-row: 7 / span 1;
-        grid-column: 2 / span 1;
-    }
-    .gallery-item:nth-child(14) {
-        grid-row: 9 / span 1;
-        grid-column: 2 / span 1;
-    }
-    .gallery-item:nth-child(15) {
-        grid-row: 10 / span 1;
-        grid-column: 2 / span 1;
-    }
-    .gallery-item:nth-child(16) {
-        grid-row: 8 / span 1;
-        grid-column: 2 / span 1;
-    }
+/* active state */
+input:focus ~ .input-bar:before, input:focus ~ .input-bar:after {
+  width:50%;
+}
 
+/* HIGHLIGHTER ================================== */
+.input-highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .input-highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
 }
